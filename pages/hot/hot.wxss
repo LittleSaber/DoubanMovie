@@ -1,0 +1,12 @@
+.swiper{
+    width:750rpx;
+    height:400rpx;
+}
+.slide-image{
+    display: inline;
+}
+.textindex{
+    position: absolute;
+    top :20px;
+    color: red;
+}

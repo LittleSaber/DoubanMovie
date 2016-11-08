@@ -1,0 +1,34 @@
+{
+  "pages":[
+    "pages/hot/hot",
+    "pages/soon/soon",
+    "pages/top/top",
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "豆瓣电影",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#fff",
+    "backgroundColor": "#000",
+    "list": [{
+      "pagePath": "pages/hot/hot",
+      "text": "正在热映",
+      "iconPath": "pages/assets/img/tiantiansifangmao-01.png",
+      "selectedIconPath": "pages/assets/img/tiantiansifangmao-02.png"
+    }, {
+      "pagePath": "pages/soon/soon",
+      "text": "即将上映",
+      "iconPath": "pages/assets/img/tiantiansifangmao-03.png",
+      "selectedIconPath": "pages/assets/img/tiantiansifangmao-04.png"
+    }, {
+      "pagePath": "pages/top/top",
+      "text": "Top250",
+      "iconPath": "pages/assets/img/tiantiansifangmao-05.png",
+      "selectedIconPath": "pages/assets/img/tiantiansifangmao-06.png"
+    }]
+  }
+}

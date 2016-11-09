@@ -3,13 +3,15 @@
     "pages/hot/hot",
     "pages/soon/soon",
     "pages/top/top",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/show/show"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "豆瓣电影",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#fff",

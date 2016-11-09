@@ -1,1 +1,30 @@
-<view>i'm soon</view>
+<view class="container">
+<view class="body-view">
+    <loading hidden="{{hidden}}">
+        加载中...
+    </loading>
+</view>
+<scroll-view scroll-y="true" style="height: {{scrollHeight}}px;" bindscrolltolower="lower">
+  <block wx:for="{{hot}}">
+    <view class="hot-item">
+      <view class="image"><image src="{{item.images.medium}}"></image></view>
+      <view class="content">
+        <view class="title">{{item.title}}</view>
+        <view wx:if="{{item.rating.average == 0}}" class="average">无</view>
+        <view wx:else class="average">{{item.rating.average}}</view>
+        <view class="genres-title">类型：</view>
+        <view class="genres">{{item.genres}}</view>
+        <view class="casts" style="color:black">演员：</view>
+        <block wx:for="{{item.casts}}">
+          <view class="casts">{{item.name}}</view>
+        </block>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<view class="body-view">
+    <toast hidden="{{noRes}}" duration="1500" bindchange="toastChange">
+        没有更多数据了...
+    </toast>
+</view>
+</view>

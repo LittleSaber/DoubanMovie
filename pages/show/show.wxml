@@ -12,7 +12,7 @@
         <view class="title">评分：{{info.rating.average}}分</view>
         <view class="title">类型：{{info.genres}}</view>
         <view class="aka">别名：
-            <block wx:for="{{info.aka}}">
+            <block wx:for="{{info.aka}}" wx:key="unique">
                 {{item}}
             </block>
         </view>
@@ -21,7 +21,7 @@
     <view class="description">{{info.summary}}</view>
     <view class="casts">
         <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
-            <block wx:for="{{info.casts}}" wx:for-index="index">    
+            <block wx:for="{{info.casts}}" wx:for-index="index" wx:key="unique">    
                 <swiper-item>    
                 <image src="{{item.avatars.small}}" class="slide-image"/>
                 <view class="casts-name">

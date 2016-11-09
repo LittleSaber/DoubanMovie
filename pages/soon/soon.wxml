@@ -5,7 +5,7 @@
     </loading>
 </view>
 <scroll-view scroll-y="true" style="height: {{scrollHeight}}px;" bindscrolltolower="lower">
-  <block wx:for="{{hot}}">
+  <block wx:for="{{hot}}" wx:key="unique">
     <view class="hot-item">
       <view class="image"><image src="{{item.images.medium}}"></image></view>
       <view class="content">
@@ -15,7 +15,7 @@
         <view class="genres-title">类型：</view>
         <view class="genres">{{item.genres}}</view>
         <view class="casts" style="color:black">演员：</view>
-        <block wx:for="{{item.casts}}">
+        <block wx:for="{{item.casts}}" wx:key="unique">
           <view class="casts">{{item.name}}</view>
         </block>
       </view>

@@ -6,7 +6,7 @@
 </view>
 <scroll-view scroll-y="true" style="height: {{scrollHeight}}px;" bindscrolltolower="lower">
   <block wx:for="{{hot}}" wx:key="unique">
-    <view class="hot-item">
+    <view class="hot-item" bindtap="clickShow" id="{{item.id}}">
       <view class="image"><image src="{{item.images.medium}}"></image></view>
       <view class="content">
         <view class="title">{{item.title}}</view>

@@ -19,8 +19,8 @@
     "list": [{
       "pagePath": "pages/hot/hot",
       "text": "正在热映",
-      "iconPath": "pages/assets/img/tiantiansifangmao-01.png",
-      "selectedIconPath": "pages/assets/img/tiantiansifangmao-02.png"
+      "iconPath": "pages/assets/img/tiantiansifangmao-03.png",
+      "selectedIconPath": "pages/assets/img/tiantiansifangmao-04.png"
     }, {
       "pagePath": "pages/soon/soon",
       "text": "即将上映",
@@ -29,8 +29,8 @@
     }, {
       "pagePath": "pages/top/top",
       "text": "Top250",
-      "iconPath": "pages/assets/img/tiantiansifangmao-05.png",
-      "selectedIconPath": "pages/assets/img/tiantiansifangmao-06.png"
+      "iconPath": "pages/assets/img/tiantiansifangmao-03.png",
+      "selectedIconPath": "pages/assets/img/tiantiansifangmao-04.png"
     }]
   }
 }

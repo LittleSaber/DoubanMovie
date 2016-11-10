@@ -7,7 +7,4 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <view bindtap="goHot">热映</view>
-  <view bindtap="goSoon">即将上映</view>
-  <view bindtap="goTop">top</view>
 </view>

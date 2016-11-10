@@ -14,6 +14,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log('onLoad');
     var that = this;
     wx.request({
       url: url,
@@ -40,6 +41,7 @@ Page({
     })
   },
   onShow: function () {
+      console.log('onShow');
       wx.getSystemInfo( {
         success: ( res ) => {
             this.setData( {

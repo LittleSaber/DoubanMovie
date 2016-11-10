@@ -7,6 +7,12 @@ Page({
     noRes: true,
     hot:[]
   },
+  clickShow: function (event) {
+    wx.setStorageSync("movieId",event.currentTarget.id);
+    wx.navigateTo({
+      url: '../show/show',
+    })
+  },
   onLoad: function () {
     var that = this;
     wx.request({

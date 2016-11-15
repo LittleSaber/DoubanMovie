@@ -87,3 +87,6 @@ swiper-item {
     font-size:30rpx;
     color: darkslategray;
 }
+.works {
+    color: #ccc;
+}

@@ -1,10 +1,17 @@
 const url = "https://api.douban.com/v2/movie/subject/";
-const url1 = "https://api.douban.com/v2/movie/celebrity/"
+const url_casts = "https://api.douban.com/v2/movie/celebrity/"
 Page({
   data:{
     info:{},
     hidden: false,
-    movieId: {}
+    movieId: {},
+    casts: []
+  },
+  clickShow: function (event) {
+    wx.setStorageSync("movieId",event.currentTarget.id);
+    wx.navigateTo({
+      url: '../show/show',
+    })
   },
   onLoad: function () {
     var movieId = wx.getStorageSync("movieId");
@@ -21,17 +28,32 @@ Page({
       success: function(res){
         wx.setNavigationBarTitle({
           title: res.data.title
-        })
+        });
+        that.setData({casts: []});
+        var casts = res.data.casts;
+        for (var i = 0; i < casts.length; i++) {
+          that.getCast(res.data.casts[i].id);
+        }
         that.setData({
             hidden: true,
             info: res.data
         });
+      }
+    })
+  },
+  getCast: function (id) {
+    var that = this;
+    wx.request({
+      url: url_casts + id,
+      async: false,
+      method: 'GET',
+      header: {
+        "Content-Type":"application/json"
       },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
+      success: function (res) {
+        that.setData({
+          casts: that.data.casts.concat(res.data)
+        })
       }
     })
   }

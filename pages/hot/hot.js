@@ -29,7 +29,7 @@ Page({
       success: function(res){
         that.setData({
           hot:res.data.subjects,
-          hidden:true
+          hidden: true
         });
       },
       fail: function() {

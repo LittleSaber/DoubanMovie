@@ -21,17 +21,17 @@
     <view class="description">{{info.summary}}</view>
     <view class="casts">
         <swiper class="swiper" indicator-dots="true" autoplay="true" interval="5000" duration="1000">    
-            <block wx:for="{{casts}}" wx:for-index="index" wx:key="unique">    
+            <block wx:for="{{info.casts}}" wx:for-index="index" wx:key="unique">    
                 <swiper-item>    
                 <image src="{{item.avatars.small}}" class="slide-image"/>
                 <view class="casts-name">
-                    <view style="width:500rpx">{{item.name}}（{{item.name_en}}）</view>
-                    <view style="width:500rpx"><block wx:if="{{item.gender}}">{{item.gender}}</block><block wx:if="{{item.born_place}}">，出生于{{item.born_place}}</block></view>
+                    <view style="width:500rpx">{{item.name}}</view>
+                    <!-- <view style="width:500rpx"><block wx:if="{{item.gender}}">{{item.gender}}</block><block wx:if="{{item.born_place}}">，出生于{{item.born_place}}</block></view>
                     <view style="width:500rpx">曾出演：
                         <block wx:for="{{item.works}}" wx:for-index="index" wx:for-item="works" wx:key="unique">
                             <text class="works" bindtap="clickShow" id="{{works.subject.id}}">{{works.subject.title}}({{works.subject.year}})  </text>
                         </block>
-                    </view>
+                    </view> -->
                 </view>
                 </swiper-item>    
             </block>   

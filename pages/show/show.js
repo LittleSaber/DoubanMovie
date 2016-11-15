@@ -29,11 +29,11 @@ Page({
         wx.setNavigationBarTitle({
           title: res.data.title
         });
-        that.setData({casts: []});
-        var casts = res.data.casts;
-        for (var i = 0; i < casts.length; i++) {
-          that.getCast(res.data.casts[i].id);
-        }
+        // that.setData({casts: []});
+        // var casts = res.data.casts;
+        // for (var i = 0; i < casts.length; i++) {
+        //   that.getCast(res.data.casts[i].id);
+        // }
         that.setData({
             hidden: true,
             info: res.data
@@ -41,20 +41,19 @@ Page({
       }
     })
   },
-  getCast: function (id) {
-    var that = this;
-    wx.request({
-      url: url_casts + id,
-      async: false,
-      method: 'GET',
-      header: {
-        "Content-Type":"application/json"
-      },
-      success: function (res) {
-        that.setData({
-          casts: that.data.casts.concat(res.data)
-        })
-      }
-    })
-  }
+  // getCast: function (id) {
+  //   var that = this;
+  //   wx.request({
+  //     url: url_casts + id,
+  //     method: 'GET',
+  //     header: {
+  //       "Content-Type":"application/json"
+  //     },
+  //     success: function (res) {
+  //       that.setData({
+  //         casts: that.data.casts.concat(res.data)
+  //       })
+  //     }
+  //   })
+  // }
 })

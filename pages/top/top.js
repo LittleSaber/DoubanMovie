@@ -1,4 +1,4 @@
-const url = 'https://api.douban.com/v2/movie/top250';
+const newData = require('../../data/data.js');
 Page({
   data:{
     start: 0,
@@ -14,30 +14,20 @@ Page({
     })
   },
   onLoad: function () {
-    var that = this;
-    wx.request({
-      url: url,
-      data: {
-        start: that.data.start,
-        count: 10
-      },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        "Content-Type":"application/json"
-      }, // 设置请求的 header
-      success: function(res){
-        that.setData({
-          hot:res.data.subjects,
-          hidden:true
-        });
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
+    let _this = this;
+    let param = {
+      API_URL : 'https://api.douban.com/v2/movie/top250',
+      data : {
+        'start' : this.data.start,
+        'count' : 10
       }
-    })
+    }
+    newData.result(param).then( data => {    
+      this.setData({
+          hot:data.data.subjects,
+          hidden: true
+      })
+    });
   },
   onShow: function () {
       wx.getSystemInfo( {
@@ -49,38 +39,30 @@ Page({
       })
   },
   lower: function () {
-      var that = this;
-      this.setData({
-          start: this.data.start + 10,
-          hidden: false
-      });
-      wx.request({
-      url: url,
-      data: {start: that.data.start},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        "Content-Type":"application/json"
-      }, // 设置请求的 header
-      success: function(res){
-        if (res.data.subjects.length == 0) {
-          that.setData({
-            hidden: true,
-            noRes: false
-          });
-        }else {
-          that.setData({
-            hot: that.data.hot.concat(res.data.subjects),
-            hidden: true
-          });
-        }
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
+    this.setData({
+        start: this.data.start + 10,
+        hidden: false
+    });
+    let param = {
+      API_URL : 'https://api.douban.com/v2/movie/top250',
+      data : {
+        'start' : this.data.start,
+        'count' : 10
       }
-    })
+    }
+    newData.result(param).then( data => {    
+      if (data.data.length == 0) {
+        this.setData({
+          hidden: true,
+          noRes: false
+        });
+      }else {
+        this.setData({
+          hot: this.data.hot.concat(data.data.subjects),
+          hidden: true
+        });
+      }
+    });
   },
   toastChange: function (event) {
     this.setData({noRes: true});

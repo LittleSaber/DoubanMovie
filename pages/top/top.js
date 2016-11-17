@@ -14,6 +14,7 @@ Page({
     })
   },
   onLoad: function () {
+    console.log('onLoad');
     let _this = this;
     let param = {
       API_URL : 'https://api.douban.com/v2/movie/top250',
@@ -30,6 +31,7 @@ Page({
     });
   },
   onShow: function () {
+    console.log('onShow');
       wx.getSystemInfo( {
         success: ( res ) => {
             this.setData( {

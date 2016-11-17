@@ -21,7 +21,6 @@
 }
 .title {
     width: 450rpx;
-    height: 50rpx;
     padding-left: 10rpx;
     padding-top: 20rpx;
     font-family: "sans-serif";

@@ -14,6 +14,8 @@
         <view wx:else class="average">{{item.rating.average}}</view>
         <view class="genres-title">类型：</view>
         <view class="genres">{{item.genres}}</view>
+        <view class="directors-title" style="color:black">导演：</view>
+        <view class="directors">{{item.directors[0].name}}</view>
         <view class="casts" style="color:black">演员：</view>
         <block wx:for="{{item.casts}}" wx:key="unique">
           <view class="casts">{{item.name}}</view>

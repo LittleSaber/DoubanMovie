@@ -4,6 +4,17 @@
         加载中...
     </loading>
 </view>
+<view class="search">
+    <view class="searchRank">
+        <view class="form">    
+            <input type="text" class="cl" value="{{value}}" bindblur="searchMovie" bindinput="getMovie" placeholder="请输入电影名称" />
+            <icon type="search" size="20" />
+        </view>
+    </view>
+</view>
+<view class="search-result">
+  {{title.title}}共{{title.total}}记录
+</view>
 <scroll-view scroll-y="true" style="height: {{scrollHeight}}px;" bindscrolltolower="lower">
   <block wx:for="{{hot}}" wx:key="unique">
     <view class="hot-item" bindtap="clickShow" id="{{item.id}}">

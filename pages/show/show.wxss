@@ -1,6 +1,5 @@
 .content {
     width: 510rpx;
-    height: 300rpx;
     padding-top: 50rpx;
     display: flex;
     flex-wrap: wrap;

@@ -1,4 +1,4 @@
-const newData = require('../../data/data.js');
+const url = 'https://api.douban.com/v2/movie/in_theaters';
 Page({
   data:{
     start: 0,
@@ -14,18 +14,27 @@ Page({
     })
   },
   onLoad: function () {
-    let _this = this;
-    let param = {
-      API_URL : 'https://api.douban.com/v2/movie/in_theaters',
-      data : {
-        'start' : this.data.start,
-        'count' : 10
-      }
-    }
-    newData.result(param).then( data => {    
-      this.setData({
-          hot:data.data.subjects,
-          hidden: true
+    // let _this = this;
+    // let param = {
+    //   API_URL : 'https://api.douban.com/v2/movie/in_theaters',
+    //   data : {
+    //     'start' : this.data.start,
+    //     'count' : 10
+    //   }
+    // }
+    // newData.result(param).then( data => {    
+    //   this.setData({
+    //       hot:data.data.subjects,
+    //       hidden: true
+    //   })
+    // });
+    var that = this;
+    fetch(url).then(function(response) {
+      response.json().then(function (data) {
+        console.log(data);
+        that.setData({
+          hot: data.subjects
+        })
       })
     });
     console.log('onLoad');

@@ -1,4 +1,4 @@
-const newData = require('../../data/data.js');
+const url = 'https://api.douban.com/v2/movie/search?q=';
 Page({
 	data:{
 		start: 0,
@@ -37,19 +37,14 @@ Page({
 		this.setData({hidden: false});
 		//发送ajax请求获取数据
 		console.log(this.data.movieName);
-		let _this = this;
-	    let param = {
-	      API_URL : 'https://api.douban.com/v2/movie/search?q=' + this.data.movieName,
-	      data: {
-	      	'start' : this.data.start,
-	      	'count' : 10
-	      }
-	    }
-	    newData.result(param).then( data => {    
-	      this.setData({
-	      	  title:data.data,
-	          hot:data.data.subjects,
+	    var that = this;
+	    fetch(url+this.data.movieName+'&start='+this.data.start+'&count=10').then(function(response) {
+	      response.json().then(function (data) {
+	        console.log(data);
+	        that.setData({
+	          hot: data.subjects,
 	          hidden: true
+	        })
 	      })
 	    });
 	},
@@ -58,25 +53,21 @@ Page({
 	        start: this.data.start + 10,
 	        hidden: false
 	    });
-	    let param = {
-	      API_URL : 'https://api.douban.com/v2/movie/search?q=' + this.data.movieName,
-	      data: {
-	      	'start' : this.data.start,
-	      	'count' : 10
-	      }
-	    }
-	    newData.result(param).then( data => {    
-	      if (data.data.length == 0) {
-	        this.setData({
-	          hidden: true,
-	          noRes: false
-	        });
-	      }else {
-	        this.setData({
-	          hot: this.data.hot.concat(data.data.subjects),
-	          hidden: true
-	        });
-	      }
+	    var that = this;
+	    fetch(url+this.data.movieName+'&start='+this.data.start+'&count=10').then(function(response) {
+	      response.json().then(function (data) {
+	        if (data.subjects.length == 0) {
+	          that.setData({
+	            hidden: true,
+	            noRes: false
+	          });
+	        }else {
+	          that.setData({
+	            hot: that.data.hot.concat(data.subjects),
+	            hidden: true
+	          });
+	        }
+	      })
 	    });
 	},
 	toastChange: function (event) {

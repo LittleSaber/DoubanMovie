@@ -1,4 +1,4 @@
-const newData = require('../../data/data.js');
+const url = 'https://api.douban.com/v2/movie/top250';
 Page({
   data:{
     start: 0,
@@ -14,21 +14,17 @@ Page({
     })
   },
   onLoad: function () {
-    console.log('onLoad');
-    let _this = this;
-    let param = {
-      API_URL : 'https://api.douban.com/v2/movie/top250',
-      data : {
-        'start' : this.data.start,
-        'count' : 10
-      }
-    }
-    newData.result(param).then( data => {    
-      this.setData({
-          hot:data.data.subjects,
+    var that = this;
+    fetch(url+'?start='+this.data.start+'&count=10').then(function(response) {
+      response.json().then(function (data) {
+        console.log(data);
+        that.setData({
+          hot: data.subjects,
           hidden: true
+        })
       })
     });
+    console.log('onLoad');
   },
   onShow: function () {
     console.log('onShow');
@@ -45,25 +41,21 @@ Page({
         start: this.data.start + 10,
         hidden: false
     });
-    let param = {
-      API_URL : 'https://api.douban.com/v2/movie/top250',
-      data : {
-        'start' : this.data.start,
-        'count' : 10
-      }
-    }
-    newData.result(param).then( data => {    
-      if (data.data.length == 0) {
-        this.setData({
-          hidden: true,
-          noRes: false
-        });
-      }else {
-        this.setData({
-          hot: this.data.hot.concat(data.data.subjects),
-          hidden: true
-        });
-      }
+    var that = this;
+    fetch(url+'?start='+this.data.start+'&count=10').then(function(response) {
+      response.json().then(function (data) {
+        if (data.subjects.length == 0) {
+          that.setData({
+            hidden: true,
+            noRes: false
+          });
+        }else {
+          that.setData({
+            hot: that.data.hot.concat(data.subjects),
+            hidden: true
+          });
+        }
+      })
     });
   },
   toastChange: function (event) {

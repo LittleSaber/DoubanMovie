@@ -7,7 +7,7 @@
 <view class="search">
     <view class="searchRank">
         <view class="form">    
-            <input type="text" class="cl" value="{{value}}" bindblur="searchMovie" bindinput="getMovie" placeholder="请输入电影名称" />
+            <input type="text" class="cl" value="" bindblur="searchMovie" bindinput="getMovie" />
             <icon type="search" size="20" />
         </view>
     </view>

@@ -1,5 +1,4 @@
 const url = "https://api.douban.com/v2/movie/subject/";
-const newData = require('../../data/data.js');
 Page({
   data:{
     info:{},
@@ -12,17 +11,16 @@ Page({
     this.setData({movieId: movieId});
   },
   onShow: function () {
-    let param = {
-      API_URL : 'https://api.douban.com/v2/movie/subject/' + this.data.movieId
-    }
-    newData.result(param).then( data => {
-      wx.setNavigationBarTitle({
-        title: data.data.title
-      });
-      this.setData({
-          hidden: true,
-          info: data.data
-      });
+    var that = this;
+    fetch(url + this.data.movieId).then(function(response) {
+      response.json().then(function (data) {
+        //console.log(data);
+        that.setData({
+          info: data,
+          hidden: true
+        })
+      })
     });
+    console.log('onShow');
   }
 })
